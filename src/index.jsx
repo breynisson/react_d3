@@ -3,6 +3,8 @@ var React = require('react'),
     d3 = require('d3');
 
 
+var ReactDOM = require('react-dom');
+
 var H1BGraph = React.createClass({
 
   componentWillMount: function () {
@@ -60,7 +62,7 @@ var H1BGraph = React.createClass({
   }
 });
 
-React.render(
+ReactDOM.render(
   <H1BGraph url="data/h1bs.csv" />,
-  document.querySelectorAll('.h1graph')[0]
+  document.querySelectorAll('.h1bgraph')[0]
 );
