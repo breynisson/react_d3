@@ -1,6 +1,7 @@
 var React = require('react'),
     _ = require('lodash'),
-    d3 = require('d3');
+    d3 = require('d3'),
+    drawers = require('./drawers.jsx');
 
 
 var ReactDOM = require('react-dom');
@@ -52,14 +53,28 @@ var H1BGraph = React.createClass({
         </h2>
       );
     }
-    return (
-      <div className="row">
-        <div className="col-md-12">
-          <svg width="700" height="500"></svg>
-        </div>
-      </div>
-    );
-  }
+
+      var params = {
+          bins: 20,
+          width: 500,
+          height: 500,
+          axisMargin: 83,
+          topMargin: 10,
+          bottomMargin: 5,
+          value: function (d) { return d.base_salary;}
+      },
+          fullwidth = 700;
+
+        return (
+          <div className="row">
+            <div className="col-md-12">
+              <svg width={fullwidth} height={params.height}>
+                  <drawers.Histogram {...params} data={this.state.rawData} />
+              </svg>
+            </div>
+          </div>
+        );
+      }
 });
 
 ReactDOM.render(
